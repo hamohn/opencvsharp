@@ -7,14 +7,14 @@ namespace OpenCvSharp.DebuggerVisualizers
     /// <summary>
     /// 
     /// </summary>
-    public partial class ImageViewer : Form
+    public partial class FormImageViewer : Form
     {
         private readonly Bitmap bitmap;
 
         /// <summary>
         /// 
         /// </summary>
-        public ImageViewer()
+        public FormImageViewer()
         {
             InitializeComponent();
         }
@@ -23,7 +23,7 @@ namespace OpenCvSharp.DebuggerVisualizers
         /// 
         /// </summary>
         /// <param name="proxy"></param>
-        public ImageViewer(MatProxy proxy)
+        public FormImageViewer(MatProxyImage proxy)
             : this()
         {
             bitmap = proxy.CreateBitmap();
@@ -36,7 +36,7 @@ namespace OpenCvSharp.DebuggerVisualizers
         /// デバッグのみを目的としています。
         /// </summary>
         /// <param name="imgFile"></param>
-        public ImageViewer(string imgFile)
+        public FormImageViewer(string imgFile)
             : this()
         {
             bitmap = new Bitmap(imgFile);

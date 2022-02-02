@@ -23,6 +23,7 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -33,7 +34,19 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
+  <PropertyGroup>
+    <PostBuildEvent>
+            copy "$(SolutionDir)src\release\x64\OpenCvSharpExtern.dll"   "$(SolutionDir)test\OpenCvSharp.DebuggerVisualizers.Tester\dll\x64\"
+            copy "$(SolutionDir)src\release\Win32\OpenCvSharpExtern.dll" "$(SolutionDir)test\OpenCvSharp.DebuggerVisualizers.Tester\dll\x86\"
+            copy "$(SolutionDir)src\release\x64\OpenCvSharpExtern.dll" "$(SolutionDir)test\OpenCvSharp.DebuggerVisualizers.Tester\"
+            copy "$(SolutionDir)opencv_files\opencv455_win_x86\x86\vc17\bin\opencv_videoio_ffmpeg455.dll"    "$(SolutionDir)test\OpenCvSharp.DebuggerVisualizers.Tester\dll\x86\"
+            copy "$(SolutionDir)opencv_files\opencv455_win_x86\x86\vc17\bin\opencv_videoio_ffmpeg455.dll"    "$(SolutionDir)test\OpenCvSharp.DebuggerVisualizers.Tester\"
+            copy "$(SolutionDir)opencv_files\opencv455_win_x64\x64\vc17\bin\opencv_videoio_ffmpeg455_64.dll" "$(SolutionDir)test\OpenCvSharp.DebuggerVisualizers.Tester\dll\x64\"
+            copy "$(SolutionDir)opencv_files\opencv455_win_x64\x64\vc17\bin\opencv_videoio_ffmpeg455_64.dll" "$(SolutionDir)test\OpenCvSharp.DebuggerVisualizers.Tester\"
+        </PostBuildEvent>
+  </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Microsoft.VisualStudio.DebuggerVisualizers, Version=17.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" />
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -58,10 +71,39 @@
       <Project>{4232cb4a-dfe3-46ca-9503-c5f1798baed3}</Project>
       <Name>OpenCvSharp.DebuggerVisualizers</Name>
     </ProjectReference>
+    <ProjectReference Include="..\..\src\OpenCvSharp.Extensions\OpenCvSharp.Extensions.csproj">
+      <Project>{b4b78bb2-1b7c-4cf2-bc72-43789eedce00}</Project>
+      <Name>OpenCvSharp.Extensions</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\src\OpenCvSharp\OpenCvSharp.csproj">
+      <Project>{eb310923-197f-4e20-b123-3a3e7f1d5069}</Project>
+      <Name>OpenCvSharp</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <None Include="_data\image\calibration\00.jpg">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Update="OpenCvSharpExtern.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Update="dll\**\*.dll;_data\**\*">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="dll\x64\dummy.txt" />
+    <None Include="dll\x86\dummy.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Update="dll\**\*.dll;_data\**\*">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
     </None>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

@@ -37,8 +37,15 @@ using System.Runtime.InteropServices;
 
 // OpenCvSharp objects' debugger visualizer
 [assembly: DebuggerVisualizer(
-    typeof(OpenCvSharp.DebuggerVisualizers.MatDebuggerVisualizer),
+    typeof(OpenCvSharp.DebuggerVisualizers.MatAsImageVisualizer),
     typeof(OpenCvSharp.DebuggerVisualizers.MatObjectSource),
     Target = typeof(OpenCvSharp.Mat),
-    Description = "Mat Visualizer"
+    Description = "View as Image"
+)]
+
+[assembly: DebuggerVisualizer(
+    typeof(OpenCvSharp.DebuggerVisualizers.MatAsGridVisualizer),
+    typeof(OpenCvSharp.DebuggerVisualizers.MatObjectSource),
+    Target = typeof(OpenCvSharp.Mat),
+    Description = "View as Grid"
 )]

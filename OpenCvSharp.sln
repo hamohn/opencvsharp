@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 16
-VisualStudioVersion = 16.0.29503.13
+# Visual Studio Version 17
+VisualStudioVersion = 17.0.32112.339
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{E048D213-B3B9-453F-9A41-29FDEB0D496B}"
 EndProject
@@ -37,7 +37,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OpenCvSharp.DebuggerVisualizers.Tester", "test\OpenCvSharp.DebuggerVisualizers.Tester\OpenCvSharp.DebuggerVisualizers.Tester.csproj", "{FFD602AA-0A08-40DD-8ACD-7F5A3BA51DEC}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OpenCvSharp.Tests.Windows", "test\OpenCvSharp.Tests.Windows\OpenCvSharp.Tests.Windows.csproj", "{36F6A125-3633-441E-9794-97EB91E50F20}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OpenCvSharp.Tests.Windows", "test\OpenCvSharp.Tests.Windows\OpenCvSharp.Tests.Windows.csproj", "{36F6A125-3633-441E-9794-97EB91E50F20}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -147,7 +147,6 @@ Global
 		{BD5471E5-7B55-5192-8DA4-042B66AF71AE}.Debug|Any CPU.ActiveCfg = Debug|Win32
 		{BD5471E5-7B55-5192-8DA4-042B66AF71AE}.Debug|ARM.ActiveCfg = Debug|ARM
 		{BD5471E5-7B55-5192-8DA4-042B66AF71AE}.Debug|x64.ActiveCfg = Release|x64
-		{BD5471E5-7B55-5192-8DA4-042B66AF71AE}.Debug|x64.Build.0 = Release|x64
 		{BD5471E5-7B55-5192-8DA4-042B66AF71AE}.Debug|x86.ActiveCfg = Release|Win32
 		{BD5471E5-7B55-5192-8DA4-042B66AF71AE}.Debug|x86.Build.0 = Release|Win32
 		{BD5471E5-7B55-5192-8DA4-042B66AF71AE}.Release|Any CPU.ActiveCfg = Release|Win32

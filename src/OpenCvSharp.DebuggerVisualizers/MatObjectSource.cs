@@ -12,7 +12,7 @@ namespace OpenCvSharp.DebuggerVisualizers
         public override void GetData(object target, Stream outgoingData)
         {
             var bf = new BinaryFormatter();
-            bf.Serialize(outgoingData, new MatProxy((Mat)target));
+            bf.Serialize(outgoingData, new MatProxyImage((Mat)target));
         }
     }
 }
