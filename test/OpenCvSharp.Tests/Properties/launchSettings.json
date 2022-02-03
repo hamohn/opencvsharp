@@ -1,0 +1,8 @@
+{
+  "profiles": {
+    "OpenCvSharp.Tests": {
+      "commandName": "Project",
+      "nativeDebugging": true
+    }
+  }
+}
