@@ -7,7 +7,7 @@ namespace OpenCvSharp.DebuggerVisualizers
     /// <summary>
     /// シリアライズ処理
     /// </summary>
-    public class MatObjectSource : VisualizerObjectSource
+    public class MatImageSource : VisualizerObjectSource
     {
         public override void GetData(object target, Stream outgoingData)
         {

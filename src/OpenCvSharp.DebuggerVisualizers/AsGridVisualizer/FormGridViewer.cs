@@ -19,7 +19,7 @@ namespace OpenCvSharp.DebuggerVisualizers
         {
             get
             {
-                return new MatProxyGrid(data, proxy.Rows, proxy.Cols, proxy.ElemChannels);
+                return new MatProxyGrid(data, proxy.Rows, proxy.Cols, proxy.Channels);
             }
         }
 
@@ -166,7 +166,7 @@ namespace OpenCvSharp.DebuggerVisualizers
         /// <returns></returns>
         private string GetWindowCaption()
         {
-            return $"Mat Viewer - Rows: {proxy.Rows} Cols: {proxy.Cols} Channels: {proxy.ElemChannels}";
+            return $"Mat Viewer - Rows: {proxy.Rows} Cols: {proxy.Cols} Channels: {proxy.Channels}";
         }
 
         /// <summary>
@@ -234,11 +234,11 @@ namespace OpenCvSharp.DebuggerVisualizers
             ToolStripComboBox cb = toolStripComboBox_NChannels;
             cb.Items.Clear();
             cb.Items.Add("All channels");
-            for (int i = 1; i <= proxy.ElemChannels; i++)
+            for (int i = 1; i <= proxy.Channels; i++)
                 cb.Items.Add(string.Format("Channel {0}", i));
 
             Application.DoEvents();
-            cb.SelectedIndex = proxy.ElemChannels > 1 ? 0 : 1;
+            cb.SelectedIndex = proxy.Channels > 1 ? 0 : 1;
         }
         #endregion
 

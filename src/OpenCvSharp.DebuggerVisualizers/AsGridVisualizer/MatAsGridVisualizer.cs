@@ -1,4 +1,5 @@
 ﻿using System;
+using System.IO;
 using Microsoft.VisualStudio.DebuggerVisualizers;
 
 namespace OpenCvSharp.DebuggerVisualizers
@@ -12,12 +13,21 @@ namespace OpenCvSharp.DebuggerVisualizers
     {
         protected override void Show(IDialogVisualizerService windowService, IVisualizerObjectProvider objectProvider)
         {
+            var objProvider = (IVisualizerObjectProvider2)objectProvider;
+            File.AppendAllText(@"c:\temp\DebuggerVisualizer.txt", $"Show: starting\n");
+            //var obj = objectProvider.GetObject();
+            var obj = objProvider.GetObject();
+            File.AppendAllText(@"c:\temp\DebuggerVisualizer.txt", $"Show: objectProvider.GetObject() returned {obj}\n");
             using var mat = objectProvider.GetObject() as MatProxyGrid;
             if (mat is null)
                 throw new ArgumentException();
 
+            File.AppendAllText(@"c:\temp\DebuggerVisualizer.txt", $"Show: got mat {mat}\n");
+
             using var form = new FormGridViewer(mat);
+            File.AppendAllText(@"c:\temp\DebuggerVisualizer.txt", $"Show: created form\n");
             windowService.ShowDialog(form);
+            File.AppendAllText(@"c:\temp\DebuggerVisualizer.txt", $"Show: displayed form\n");
         }
 
 
