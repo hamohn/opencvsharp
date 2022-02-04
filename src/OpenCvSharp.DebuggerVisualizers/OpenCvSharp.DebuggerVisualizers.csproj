@@ -4,18 +4,27 @@
     <OutputType>Library</OutputType>
     <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
     <UseWindowsForms>true</UseWindowsForms>
+    <UseWPF>true</UseWPF>
     <ImportWindowsDesktopTargets>true</ImportWindowsDesktopTargets>
     <LangVersion>latest</LangVersion>
     <AllowUnsafeBlocks>True</AllowUnsafeBlocks>
+    <ApplicationIcon>OpenCvLogo.ico</ApplicationIcon>
   </PropertyGroup>
   <ItemGroup>
+    <None Remove="logo.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="OpenCvLogo.ico" />
     <Content Include="OpenCvSharp.dll" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="logo.png" />
   </ItemGroup>
   <ItemGroup>
     <!-- Look at https://github.com/tunnelvisionlabs/vsxdeps/tree/master/VSSDK.DebuggerVisualizers.14 to find a way to use the latest version of Microsoft.VisualStudio.DebuggerVisualizers (17.0.2012701) -->
     <PackageReference Include="Microsoft.CSharp" Version="4.7.0" />
     <PackageReference Include="Microsoft.VisualStudio.DebuggerVisualizers" Version="17.0.2012701" />
-    <PackageReference Include="VSSDK.DebuggerVisualizers" Version="12.0.4" />
+    <!--<PackageReference Include="VSSDK.DebuggerVisualizers" Version="12.0.4" />-->
     <PackageReference Include="System.Data.DataSetExtensions" Version="4.5.0" />
   </ItemGroup>
   <ItemGroup>

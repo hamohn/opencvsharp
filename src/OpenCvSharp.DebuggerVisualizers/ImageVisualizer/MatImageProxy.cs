@@ -9,11 +9,11 @@ namespace OpenCvSharp.DebuggerVisualizers
     /// 送る際に、このProxyに表示に必要なシリアライズ可能なデータを詰めて送り、受信側で復元する。
     /// </summary>
     [Serializable]
-    public class MatProxyImage : IDisposable
+    public class MatImageProxy : IDisposable
     {
         public byte[] ImageData { get; private set; }
 
-        public MatProxyImage(Mat image)
+        public MatImageProxy(Mat image)
         {
             ImageData = image.ToBytes(".png");
         }

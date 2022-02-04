@@ -23,7 +23,7 @@ namespace OpenCvSharp.DebuggerVisualizers
         /// 
         /// </summary>
         /// <param name="proxy"></param>
-        public FormImageViewer(MatProxyImage proxy)
+        public FormImageViewer(MatImageProxy proxy)
             : this()
         {
             bitmap = proxy.CreateBitmap();

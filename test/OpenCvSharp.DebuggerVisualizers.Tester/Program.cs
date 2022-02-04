@@ -1,4 +1,5 @@
-﻿using System;
+﻿using OpenCvSharp.DebuggerVisualizers.GridVisualizer;
+using System;
 using System.Windows.Forms;
 
 namespace OpenCvSharp.DebuggerVisualizers.Tester
@@ -15,17 +16,19 @@ namespace OpenCvSharp.DebuggerVisualizers.Tester
 			Application.SetCompatibleTextRenderingDefault(false);
 
             // Test the MatAsGridVisualizer
+            var data = new float[] { 1, 1, 1, 2, 2, 2, 3, 3, 3, 4, 4, 4, 5, 5, 5, 6, 6, 6, 7, 7, 7, 8, 8, 8, 9, 9, 9, 10, 10, 10, 11, 11, 11, 12, 12, 12 };
+            var mat = new Mat(4, 3, MatType.CV_32FC3, data);
+            MatGridVisualizer.TestShowVisualizer(mat);
+
             var _gridNeighborLeft = 400;
 			var _gridSizeLeft = new Size(20, 20);
-			var mat = (Mat)Mat.Zeros(_gridNeighborLeft, 9, MatType.CV_32SC1);
+			mat = (Mat)Mat.Zeros(_gridNeighborLeft, 9, MatType.CV_32SC1);
 			InitalizeNeighbors(mat, _gridSizeLeft);
-            //var data = new float[] { 1, 1, 1, 2, 2, 2, 3, 3, 3, 4, 4, 4, 5, 5, 5, 6, 6, 6, 7, 7, 7, 8, 8, 8, 9, 9, 9, 10, 10, 10, 11, 11, 11, 12, 12, 12 };
-            //var mat = new Mat(4, 3, MatType.CV_32FC3, data);
-            MatAsGridVisualizer.TestShowVisualizer(mat);
+            MatGridVisualizer.TestShowVisualizer(mat);
 
             // Test the MatAsImageVisualizer
             var img = new Mat(@"_data\image\calibration\00.jpg");
-            MatAsImageVisualizer.TestShowVisualizer(img);
+            MatImageVisualizer.TestShowVisualizer(img);
         }
 
         static void InitalizeNeighbors(Mat neighbor, Size gridSize)

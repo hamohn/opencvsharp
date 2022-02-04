@@ -6,11 +6,11 @@ namespace OpenCvSharp.DebuggerVisualizers
     /// <summary>
     /// DialogDebuggerVisualizer that displays a Mat as an image
     /// </summary>
-    public class MatAsImageVisualizer : DialogDebuggerVisualizer
+    public class MatImageVisualizer : DialogDebuggerVisualizer
     {
         protected override void Show(IDialogVisualizerService windowService, IVisualizerObjectProvider objectProvider)
         {
-            using var image = objectProvider.GetObject() as MatProxyImage;
+            using var image = objectProvider.GetObject() as MatImageProxy;
             if (image is null)
                 throw new ArgumentException();
 
@@ -26,8 +26,8 @@ namespace OpenCvSharp.DebuggerVisualizers
         /// <param name="objectToVisualize"></param>
         public static void TestShowVisualizer(object objectToVisualize)
         {
-            var proxy = new MatProxyImage((Mat)objectToVisualize);
-            VisualizerDevelopmentHost myHost = new(proxy, typeof(MatAsImageVisualizer));
+            var proxy = new MatImageProxy((Mat)objectToVisualize);
+            VisualizerDevelopmentHost myHost = new(proxy, typeof(MatImageVisualizer));
             myHost.ShowVisualizer();
         }
 
