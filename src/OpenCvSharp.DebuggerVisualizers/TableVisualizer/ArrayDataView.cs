@@ -1,7 +1,8 @@
 using System;
 using System.ComponentModel;
+using System.Threading.Tasks;
 
-namespace OpenCvSharp.DebuggerVisualizers.GridVisualizer
+namespace OpenCvSharp.DebuggerVisualizers.TableVisualizer
 {
     public class ArrayDataView	: IBindingList
     {
@@ -19,8 +20,8 @@ namespace OpenCvSharp.DebuggerVisualizers.GridVisualizer
         {
             _data = array;
             _rows = new ArrayRowView[array.GetLength(0)];
-            for (var i = 0; i < _rows.Length; i++)
-                _rows[i] = new ArrayRowView(this,i);
+            Parallel.For(0, _rows.Length, i =>
+                _rows[i] = new ArrayRowView(this, i));
         }
         
         #endregion Constructors

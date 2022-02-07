@@ -1,13 +1,13 @@
 ﻿using System.Windows.Controls;
 
-namespace OpenCvSharp.DebuggerVisualizers.GridVisualizer
+namespace OpenCvSharp.DebuggerVisualizers.TableVisualizer
 {
     /// <summary>
     /// Interaction logic for ControlGridViewer.xaml
     /// </summary>
-    public partial class ControlGridViewer : UserControl
+    public partial class ControlTableViewer : UserControl
     {
-        public ControlGridViewer()
+        public ControlTableViewer()
         {
             InitializeComponent();
         }

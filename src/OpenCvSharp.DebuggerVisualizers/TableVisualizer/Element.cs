@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace OpenCvSharp.DebuggerVisualizers.GridVisualizer
+namespace OpenCvSharp.DebuggerVisualizers.TableVisualizer
 {
     [Serializable]
     public class Element : Tuple<double, double, double, double>

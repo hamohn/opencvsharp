@@ -1,17 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
+﻿using System.Windows.Controls;
 using System.Windows.Input;
 using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 
 namespace OpenCvSharp.DebuggerVisualizers.ImageVisualizer
 {
@@ -23,6 +12,26 @@ namespace OpenCvSharp.DebuggerVisualizers.ImageVisualizer
         public ControlImageViewer()
         {
             InitializeComponent();
+        }
+
+
+        private void UIElement_OnMouseWheel(object sender, MouseWheelEventArgs e)
+        {
+            var image = sender as Image;
+            var matrix = image.LayoutTransform.Value;
+
+            if (e.Delta > 0)
+            {
+                matrix.ScaleAt(2, 2, e.GetPosition(this).X, e.GetPosition(this).Y);
+            }
+            else
+            {
+                matrix.ScaleAt(0.5, 0.5, e.GetPosition(this).X, e.GetPosition(this).Y);
+            }
+
+            image.LayoutTransform = new MatrixTransform(matrix);
+            UpdateLayout();
+            //image.Arrange(new System.Windows.Rect(0, 0, Width, Height));
         }
     }
 }

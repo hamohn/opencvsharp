@@ -2,7 +2,7 @@ using System;
 using System.Diagnostics;
 using System.ComponentModel;
 
-namespace OpenCvSharp.DebuggerVisualizers.GridVisualizer
+namespace OpenCvSharp.DebuggerVisualizers.TableVisualizer
 {
 
     public class ArrayPropertyDescriptor : PropertyDescriptor

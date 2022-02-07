@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Windows;
+using System.Windows.Media.Imaging;
 using Microsoft.VisualStudio.DebuggerVisualizers;
 
 namespace OpenCvSharp.DebuggerVisualizers.ImageVisualizer
@@ -22,9 +23,8 @@ namespace OpenCvSharp.DebuggerVisualizers.ImageVisualizer
             {
                 Title         = "Image Viewer",
                 Content       = control,
-                SizeToContent = SizeToContent.WidthAndHeight,
-                //Icon          = new BitmapImage(new Uri("pack://application:,,,/OpenCvSharp.DebuggerVisualizers;component/logo.png")),
-                //Icon          = BitmapFrame.Create(Application.GetResourceStream(new Uri("logo.png", UriKind.RelativeOrAbsolute)).Stream),
+                //SizeToContent = SizeToContent.WidthAndHeight,
+                Icon          = new BitmapImage(new Uri("pack://application:,,,/OpenCvSharp.DebuggerVisualizers;component/logo.png")),
             };
             win.ShowDialog();
         }

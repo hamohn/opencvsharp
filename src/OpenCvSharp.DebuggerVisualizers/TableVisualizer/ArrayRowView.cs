@@ -1,7 +1,7 @@
 using System;
 using System.ComponentModel;
 
-namespace OpenCvSharp.DebuggerVisualizers.GridVisualizer
+namespace OpenCvSharp.DebuggerVisualizers.TableVisualizer
 {
 	public class ArrayRowView : ICustomTypeDescriptor, IEditableObject, IDataErrorInfo
 	{

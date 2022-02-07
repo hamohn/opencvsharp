@@ -1,13 +1,15 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.IO;
 using System.Runtime.CompilerServices;
 using System.Runtime.Serialization;
+using System.Threading.Tasks;
 
-namespace OpenCvSharp.DebuggerVisualizers.GridVisualizer
+namespace OpenCvSharp.DebuggerVisualizers.TableVisualizer
 {
     [Serializable]
-    public class MatGridProxy : INotifyPropertyChanged, IDisposable
+    public class MatTableProxy : INotifyPropertyChanged, IDisposable
     {
         [NonSerialized] private string         _title;
         [NonSerialized] private ArrayDataView  _view;
@@ -15,7 +17,7 @@ namespace OpenCvSharp.DebuggerVisualizers.GridVisualizer
 
 
         public string         Title          => _title;
-        public ArrayDataView  View           { get { if (_view is null) _view = new ArrayDataView(Data); return _view; } }
+        public ArrayDataView  View           { get { if (_view is null) StartLoadingArrayView(); return _view; } }
         public Element[,]     Data           { get; private set; }
         public int            Rows           { get; private set; }
         public int            Cols           { get; private set; }
@@ -28,7 +30,7 @@ namespace OpenCvSharp.DebuggerVisualizers.GridVisualizer
 
 
         
-        public MatGridProxy(Mat mat)
+        public MatTableProxy(Mat mat)
         {
             Rows         = mat.Rows;
             Cols         = mat.Cols;
@@ -40,7 +42,7 @@ namespace OpenCvSharp.DebuggerVisualizers.GridVisualizer
 
 
 
-        public MatGridProxy(Element[,] data, int rows, int cols, int elemChannels)
+        public MatTableProxy(Element[,] data, int rows, int cols, int elemChannels)
         {
             Data         = data;
             Rows         = rows;
@@ -51,10 +53,25 @@ namespace OpenCvSharp.DebuggerVisualizers.GridVisualizer
         }
 
         
+        private void StartLoadingArrayView()
+        {
+            Task.Run(
+                () => {
+                    _view = new ArrayDataView(Data);
+                })
+                .ContinueWith(
+                t => {
+                    File.AppendAllText(@"c:\temp\DebuggerVisualizer.txt", $"MatTableProxy.Done loading ArrayView\n");
+                    NotifyPropertyChanged(nameof(View));
+                }
+            );
+        }
+
         [OnDeserialized()]
         internal void OnDeserializedMethod(StreamingContext context)
         {
             Initialize();
+            File.AppendAllText(@"c:\temp\DebuggerVisualizer.txt", $"MatTableProxy.OnDeserializedMethod - got: {Rows} x {Cols}\n");
         }
 
 

@@ -6,12 +6,14 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
     xmlns:local="clr-namespace:OpenCvSharp.DebuggerVisualizers.ImageVisualizer"
     mc:Ignorable="d" 
+    d:Background="White"
     d:DesignHeight="450"
     d:DesignWidth="800"
+    d:DataContext="{d:DesignInstance Type=local:MatImageProxy, IsDesignTimeCreatable=false}"
 >
     <Grid>
-        <ScrollViewer Name="MyScrollViewer" CanContentScroll="True">
-            <Image MouseWheel="UIElement_OnMouseWheel"/>
-        </ScrollViewer>
+        <local:ZoomBorder ClipToBounds="True" Background="Gray">
+            <Image Source="{Binding ImageSource}"/>
+        </local:ZoomBorder>
     </Grid>
 </UserControl>
